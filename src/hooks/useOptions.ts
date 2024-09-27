@@ -1,12 +1,40 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useOverrides } from './useOverrides'
-
+import { ethers } from 'ethers';
 import { BodyShape, PreviewCamera, PreviewEmote, PreviewOptions, PreviewProjection, PreviewType } from '@dcl/schemas'
 import { parseZoom } from '../lib/zoom'
 
+declare global {
+  interface Window { ethereum?: any }
+}
+
 export const useOptions = () => {
+  const getAddress = async () => {
+    if (window.ethereum) {
+      try {
+        const provider = new ethers.providers.Web3Provider(window.ethereum)
+        await provider.send("eth_requestAccounts", []);
+        const signer = provider.getSigner()
+        return signer;
+      } catch (error) {
+        console.error('Erro ao conectar com MetaMask', error);
+      }
+    } else {
+      alert('MetaMask não está instalado');
+    }
+  }
   // get options from url params
   const [search] = useState(window.location.search.toString())
+  const [profile, setProfile] = useState<any>('default')
+  useEffect(() => {
+    async function fetchProfile() {
+      const signer = await getAddress();
+      const addr = await signer?.getAddress()
+      setProfile(addr);
+    }
+    fetchProfile();
+  }, []);
+
   const options = useMemo<PreviewOptions>(() => {
     const params = new URLSearchParams(search)
     const autoRotateSpeedParam = params.get('autoRotateSpeed') as string | null
@@ -71,7 +99,7 @@ export const useOptions = () => {
       urns: params.getAll('urn'),
       urls: params.getAll('url'),
       base64s: params.getAll('base64'),
-      profile: params.get('profile'),
+      profile: profile,
       showSceneBoundaries: params.has('showSceneBoundaries') || false,
       showThumbnailBoundaries: params.has('showThumbnailBoundaries') || false,
       disableBackground: params.has('disableBackground') || transparentBackground,
@@ -90,7 +118,7 @@ export const useOptions = () => {
       lockRadius: lockRadius === 'true',
     }
     return options
-  }, [search])
+  }, [search, profile])
 
   // apply overrides
   const overrides = useOverrides()
