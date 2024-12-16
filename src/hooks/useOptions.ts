@@ -102,7 +102,7 @@ export const useOptions = () => {
       profile: profile,
       showSceneBoundaries: params.has('showSceneBoundaries') || false,
       showThumbnailBoundaries: params.has('showThumbnailBoundaries') || false,
-      disableBackground: params.has('disableBackground') || transparentBackground,
+      disableBackground: true,
       disableAutoCenter: params.has('disableAutoCenter') || !centerBoundingBox,
       disableAutoRotate: params.has('disableAutoRotate') || !centerBoundingBox,
       disableFace: params.has('disableFace'),
@@ -114,7 +114,7 @@ export const useOptions = () => {
       type: params.get('type') as PreviewType | null,
       panning: panning === 'true' || panning === null,
       lockAlpha: lockAlpha === 'true',
-      lockBeta: lockBeta === 'true',
+      lockBeta: true,
       lockRadius: lockRadius === 'true',
     }
     return options

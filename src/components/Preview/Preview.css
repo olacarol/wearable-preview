@@ -16,13 +16,11 @@
 }
 
 .Preview canvas {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  opacity: 0;
-  transition: opacity ease 0.3s;
+  width: 650px;
+  max-width: 100%;
+  height: auto;   /* Manter a proporção */
+  border-radius: 10px;
+  margin: 0px 20px 0px 0px;
 }
 
 .Preview canvas.is-visible {
@@ -73,4 +71,19 @@
 .Preview.no-fade-effect canvas,
 .Preview.no-fade-effect .thumbnail {
   transition: none;
+}
+
+.container-preview {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  background: rgb(116,44,237);
+  background: linear-gradient(0deg, rgba(116,44,237,1) 0%, rgba(194, 194, 194, 0.991) 50%, rgba(231,231,231,1) 97%);
+  min-height: 70vh; /* Define a altura mínima como 50% da altura da viewport */
+  position: relative;
+
 }

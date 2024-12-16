@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+    padding: 0;
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: flex-start; /* Mantém no topo */
+    min-height: 100vh; /* Garante que o corpo ocupe a altura total da janela */
+    background-color: #181818; /* Altere para a cor de fundo desejada */
+  }
+
+.Logo {
+    height: auto;
+    margin: -200px 0px 0px 0px; /* Centraliza o logo horizontalmente */
+    display: block;
+    margin-left: -50px;
+    padding: 5px 100px 0px 0px; /* Adiciona algum espaço ao redor do logo para o gradiente ser visível */
+    position: absolute;
+}

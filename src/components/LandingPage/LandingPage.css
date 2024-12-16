@@ -1,0 +1,60 @@
+.container {
+  width: 80%;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  background: rgb(116,44,237);
+  background: linear-gradient(0deg, rgba(116,44,237,1) 0%, rgba(194, 194, 194, 0.991) 50%, rgba(231,231,231,1) 97%);
+  min-height: 70vh; 
+  position: relative;
+  bottom: 60px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;  /* Centraliza os botões horizontalmente */
+  gap: 65px;  /* Espaço entre os botões */
+  margin: 230px 600px 0px 10px;
+}
+
+.button {
+  padding: 20px 30px;
+  background-color: rgb(85, 33, 174);
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 26px;
+  border-radius: 35px;
+  white-space: nowrap;  /* Impede a quebra de linha */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 240px; 
+  text-align: center;  
+}
+
+.button:hover {
+  background-color: rgb(73, 25, 155);
+  transform: scale(1.05);
+}
+
+.logo-image {
+  width: 400px;
+  position: absolute;
+  top: -5px;
+  left: -120px;
+  height: auto;
+}
+
+.paragraph {
+  font-size: 38px;
+  margin: 250px 1200px 0px 30px; 
+  width: 100%;
+  white-space: nowrap;
+  text-align: left; 
+  color: rgb(46, 46, 46);
+}
+
+.lexend-deca {
+  font-family: 'Lexend Deca', sans-serif;
+}
